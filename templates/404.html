@@ -1,11 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Not Found</title>
-</head>
-<body>
-    <h1>Requested resource not found, you can see our homepage instead :)</h1>
-    <h2><a href='{{ url_for("home") }}'>Home</a></h2>
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block title %}Page Not Found{% endblock %}
+
+{% block main %}
+
+
+<div class="container text-center">
+  <h1 class="jumbotron-heading">Page Not Found</h1>
+  <p class="lead">We couldn't find what you are looking for. Come vist our homepage :)</p>
+  <p>
+    <a href="{{ url_for('home') }}"><button class="btn btn-primary my-2">Home</button></a>
+  </p>
+</div>
+
+
+{% endblock %}
