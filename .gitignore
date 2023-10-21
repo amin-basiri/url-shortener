@@ -4,4 +4,4 @@ urls.json
 
 Pipfile.lock
 
-/static/files/*
+/urlshort/static/files/*
