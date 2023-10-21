@@ -24,8 +24,15 @@ export FLASK_DEBUG=1
 export FLASK_APP=urlshort
 ```
 
-## Start
+## Start Dev
 
 ```shell
 flask run
+```
+
+
+## Start Prod
+
+```shell
+gunicorn "urlshort:create_app()" -b 0.0.0.0
 ```
