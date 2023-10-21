@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Shortener</title>
+</head>
+<body>
+    {% for message in get_flashed_messages() %}
+        <h2> {{ message }} </h2>
+    {% endfor %}
+
+    <form action="/your-url" method="POST">
+        <label for="url">Url: </label>
+        <input name="url" type="url" value="" required />
+        <br />
+        <label for="code">Code: </label>
+        <input name="code" type="text" value="" required />
+        <br />
+        <input type="submit" value="Submit">
+    </form>
+
+    <br />
+
+    <form action="/your-url" method="POST" enctype="multipart/form-data">
+        <label for="file">File: </label>
+        <input name="file" type="file" value="" required />
+        <br />
+        <label for="code">Code: </label>
+        <input name="code" type="text" value="" required />
+        <br />
+        <input type="submit" value="Submit">
+    </form>
+
+</body>
+</html>

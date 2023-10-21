@@ -1,0 +1,7 @@
+.idea
+
+urls.json
+
+Pipfile.lock
+
+/static/files/*
