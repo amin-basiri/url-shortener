@@ -31,5 +31,16 @@
         <input type="submit" value="Submit">
     </form>
 
+    {% if codes %}
+    <h1>Codes you've provided: </h1>
+
+    <ul>
+        {% for code in codes %}
+        <a href="{{ url_for('redirect_to_url', code=code) }}"><li> {{ code }} </li></a>
+        {% endfor %}
+    </ul>
+
+    {% endif %}
+
 </body>
 </html>

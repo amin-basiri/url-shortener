@@ -1,7 +1,7 @@
 import os
 import json
 from werkzeug.utils import secure_filename
-from flask import Flask, render_template, request, redirect, url_for, flash, abort
+from flask import Flask, render_template, request, redirect, url_for, flash, abort, session
 
 app = Flask(__name__)
 app.secret_key = "anslefjslnfef45y5R5yryrr5R%r5RGEFersfs$eTEGetg"
@@ -9,7 +9,7 @@ app.secret_key = "anslefjslnfef45y5R5yryrr5R%r5RGEFersfs$eTEGetg"
 
 @app.route("/")
 def home():
-    return render_template("home.html")
+    return render_template("home.html", codes=session.keys())
 
 
 @app.route("/your-url", methods=["POST", "GET"])
@@ -31,13 +31,14 @@ def your_url():
             file = request.files['file']
             file_name = request.form["code"] + secure_filename(file.filename)
             urls[request.form["code"]] = {"file": file_name}
-            file.save(os.getcwd() + f"/files/{file_name}")
+            file.save(os.getcwd() + f"/static/files/{file_name}")
         else:
             flash("Invalid payload")
             return redirect(url_for('home'))
 
         with open("urls.json", "wt") as f:
             f.write(json.dumps(urls))
+            session[request.form["code"]] = True
 
         return render_template("your-url.html", code=request.form["code"])
     else:
